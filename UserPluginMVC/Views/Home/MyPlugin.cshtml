@@ -1,0 +1,17 @@
+﻿
+@{
+    Layout = null;
+    var request = Html.ViewContext.RequestContext.HttpContext.Request;
+    var url = new UrlHelper(Html.ViewContext.RequestContext);
+    var result = string.Format("{0}://{1}{2}", request.Url.Scheme, request.Url.Authority, url.Content("~"));
+}
+
+// ==UserScript==
+@Html.Raw("// @name        My Plugin")
+@Html.Raw("// @namespace   MyPlugin")
+@Html.Raw("// @description My Plugin")
+@Html.Raw("// @version     1.0")
+@Html.Raw("// @include     http://mysite*")
+// ==/UserScript==
+
+<div>@result</div>

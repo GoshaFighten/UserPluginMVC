@@ -5,14 +5,15 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace UserPluginMVC
-{
-    public class RouteConfig
-    {
-        public static void RegisterRoutes(RouteCollection routes)
-        {
+namespace UserPluginMVC {
+    public class RouteConfig {
+        public static void RegisterRoutes(RouteCollection routes) {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
+            routes.MapRoute(
+                name: "Plugin",
+                url: "GetPlugin/{name}",
+                defaults: new { controller = "Home", action = "GetPlugin", name = UrlParameter.Optional }
+            );
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
